@@ -65,7 +65,9 @@ mobile-platform-hub (tracks release)
 
 | Workflow | Trigger | Action |
 |----------|---------|--------|
-| `create-release.yml` | Tag push (v* or *-beta.*) | Creates GitHub release, callbacks to hub |
+| `create-release.yml` | Tag push (v* or *-beta.*) | Validates package only |
+
+**Note:** This repo has NO secrets. All release logic (push, tag, release creation, Slack, hub callback) is handled by `onboardid-flutter` source repo. This repo is treated like an external platform (similar to npm, CocoaPods, pub.dev).
 
 ## Related Repositories
 
