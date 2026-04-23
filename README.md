@@ -9,6 +9,7 @@ Flutter plugin that bridges the native NetkiSDK for iOS and Android, providing i
 - [Supported Versions](#supported-versions)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
+- [Running the Example App](#running-the-example-app)
 - [API Reference](#api-reference)
 - [UI Customization](#ui-customization)
 - [Android Configuration](#android-configuration)
@@ -105,6 +106,59 @@ if (result.isSuccessful) {
   print('Submitted successfully');
 }
 ```
+
+## Running the Example App
+
+The example app demonstrates SDK usage with environment-specific credentials.
+
+### Setup Environment Variables
+
+Add the following to your `~/.zshrc` (or `~/.bashrc`):
+
+```bash
+# SDK Tokens
+export NETKI_SDK_TOKEN_DEV="your-dev-token"
+export NETKI_SDK_TOKEN_QA="your-qa-token"
+export NETKI_SDK_TOKEN_PROD="your-prod-token"
+```
+
+Then run `source ~/.zshrc` to apply.
+
+### Run with Makefile
+
+```bash
+cd example
+
+# Check if environment variables are set
+make check-env
+
+# Run with specific environment
+make run-dev    # Development
+make run-qa     # QA
+make run-prod   # Production
+
+# Build APKs
+make build-dev-apk
+make build-qa-apk
+make build-prod-apk
+```
+
+### How It Works
+
+The Makefile targets inject credentials at compile time using Flutter's `--dart-define`:
+
+```bash
+flutter run --dart-define=NETKI_SDK_TOKEN=$NETKI_SDK_TOKEN_DEV --dart-define=NETKI_ENVIRONMENT=DEV
+```
+
+The example app reads these values in `lib/src/config.dart`:
+
+```dart
+static const String token = String.fromEnvironment('NETKI_SDK_TOKEN');
+static const String environment = String.fromEnvironment('NETKI_ENVIRONMENT');
+```
+
+This approach keeps credentials out of version control while allowing easy environment switching.
 
 ## API Reference
 

@@ -1,3 +1,7 @@
+## 11.2.0
+
+* Version alignment with SDK ecosystem
+
 ## 11.0.0-SNAPSHOT
 
 * Add GitHub Actions for CI/CD
