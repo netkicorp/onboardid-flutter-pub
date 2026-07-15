@@ -1,5 +1,5 @@
 group = "com.netki.netki_sdk"
-version = "11.0.0-SNAPSHOT"
+version = "12.0.1"
 
 buildscript {
     val kotlinVersion = "2.2.20"
@@ -18,8 +18,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://art.myverify.io/netki/libs-release-local/") }
-        maven { url = uri("https://art.myverify.io/netki/libs-snapshot-local/") }
         maven { url = uri("https://developer.huawei.com/repo/") }
     }
 }
@@ -55,6 +53,7 @@ android {
 
     defaultConfig {
         minSdk = 24
+        manifestPlaceholders["bridgeVersion"] = readBridgeVersionFromPubspec()
     }
 
     buildFeatures {
@@ -78,8 +77,17 @@ android {
     }
 }
 
+fun readBridgeVersionFromPubspec(): String {
+    val pubspec = file("${projectDir.parent}/pubspec.yaml")
+    val line = pubspec.readLines().firstOrNull { it.startsWith("version:") }
+        ?: error("version not found in ${pubspec.path}")
+    return line.substringAfter("version:").trim()
+}
+
 dependencies {
-    implementation("com.netki:netkisdk:11.00.0-SNAPSHOT")
+    implementation("com.netki:netkisdk:12.0.1")
+    implementation("com.google.accompanist:accompanist-permissions:0.36.0")
+    implementation("net.sf.scuba:scuba-sc-android:0.0.20")
 
     // Compose BOM to ensure consistent versions across all Compose libraries
     implementation(platform("androidx.compose:compose-bom:2025.05.01"))

@@ -154,13 +154,16 @@ class OnBoardIdBridge: NSObject, FlutterStreamHandler {
 
         let idCountry = Mappers.mapToIdCountry(idCountryMap)
 
-        let identificationView = OnBoardId.shared.getIdentificationView(
-            idType: idType,
-            idCountry: idCountry,
-            identificationDelegate: self
-        )
-
-        presentView(identificationView, result: result)
+        do {
+            let identificationView = try OnBoardId.shared.getIdentificationView(
+                idType: idType,
+                idCountry: idCountry,
+                identificationDelegate: self
+            )
+            presentView(identificationView, result: result)
+        } catch {
+            result(FlutterError(code: "UNEXPECTED_ERROR", message: error.localizedDescription, details: nil))
+        }
     }
 
     private func submitIdentification(call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -185,12 +188,15 @@ class OnBoardIdBridge: NSObject, FlutterStreamHandler {
             return
         }
 
-        let biometricsView = OnBoardId.shared.getBiometricsView(
-            transactionId: transactionId,
-            identificationDelegate: self
-        )
-
-        presentView(biometricsView, result: result)
+        do {
+            let biometricsView = try OnBoardId.shared.getBiometricsView(
+                transactionId: transactionId,
+                identificationDelegate: self
+            )
+            presentView(biometricsView, result: result)
+        } catch {
+            result(FlutterError(code: "UNEXPECTED_ERROR", message: error.localizedDescription, details: nil))
+        }
     }
 
     private func submitBiometrics(call: FlutterMethodCall, result: @escaping FlutterResult) {

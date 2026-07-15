@@ -1,3 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.netki.netki_sdk">
+  <application>
+    <meta-data
+      android:name="com.netki.bridge_version"
+      android:value="${bridgeVersion}" />
+  </application>
 </manifest>
