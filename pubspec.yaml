@@ -1,6 +1,6 @@
 name: netki_sdk
 description: "Flutter plugin for NetkiSDK - identity verification and onboarding for iOS and Android."
-version: 13.0.1-beta.6
+version: 13.0.1
 homepage: https://netki.com
 repository: https://github.com/netkicorp/onboardid-flutter
 issue_tracker: https://github.com/netkicorp/onboardid-flutter/issues
