@@ -85,7 +85,7 @@ fun readBridgeVersionFromPubspec(): String {
 }
 
 dependencies {
-    implementation("com.netki:netkisdk:12.0.1")
+    implementation("com.netki:netkisdk:13.0.0")
     implementation("com.google.accompanist:accompanist-permissions:0.36.0")
     implementation("net.sf.scuba:scuba-sc-android:0.0.20")
 
