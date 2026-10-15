@@ -1,3 +1,9 @@
+## 13.0.3
+
+* Consumes native NetkiSDK 13.0.3 on both platforms
+* Auto-capture now counts down 3-2-1 before the shutter instead of firing the instant the document is framed, and the countdown is called off if the document drifts out of frame
+* iOS no longer auto-captures an ID that is hanging outside the visible camera preview
+
 ## 13.0.1
 
 * Consumes native NetkiSDK 13.0.1 on iOS and 13.0.0 on Android (Android from Maven Central, iOS from CocoaPods trunk)
