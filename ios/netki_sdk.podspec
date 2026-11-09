@@ -28,7 +28,7 @@ providing identity verification and onboarding capabilities.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'NetkiSDK', '~> 13.0.3'
+  s.dependency 'NetkiSDK', '~> 13.1.0'
   s.platform = :ios, '17.0'
 
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

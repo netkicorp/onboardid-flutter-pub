@@ -1,3 +1,9 @@
+## 13.1.0
+
+* Consumes native NetkiSDK 13.1.0 on both platforms
+* The `post_install` hook forcing `BUILD_LIBRARY_FOR_DISTRIBUTION` on `NFCPassportReader` is no longer required and has been removed from the example Podfile
+* Resolves NetkiSDK from Netki's own spec source in addition to CocoaPods Trunk
+
 ## 13.0.3
 
 * Consumes native NetkiSDK 13.0.3 on both platforms
